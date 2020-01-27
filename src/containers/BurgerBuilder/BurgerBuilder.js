@@ -21,19 +21,8 @@ class BurgerBuilder extends Component {
       meat: 0
     },
     totalPrice: 2,
-    purchaseable: false
-  };
-
-  updatePurchaseableState = ingredients => {
-    const sum = Object.keys(ingredients)
-      .map(key => {
-        return ingredients[key];
-      })
-      .reduce((sum, el) => {
-        return sum + el;
-      }, 0);
-
-    this.setState({ purchaseable: sum > 0 });
+    purchaseable: false,
+    purchasing: false
   };
 
   addIngredientHandler = type => {
@@ -67,6 +56,22 @@ class BurgerBuilder extends Component {
     this.updatePurchaseableState(updatedIngredients);
   };
 
+  updatePurchaseableState = ingredients => {
+    const sum = Object.keys(ingredients)
+      .map(key => {
+        return ingredients[key];
+      })
+      .reduce((sum, el) => {
+        return sum + el;
+      }, 0);
+
+    this.setState({ purchaseable: sum > 0 });
+  };
+
+  purchaseHandler = () => {
+    this.setState({purchasing: true})
+  }
+
   render() {
     //TODO try to do it using map()
     let disabledButton = { ...this.state.ingredients };
@@ -76,7 +81,7 @@ class BurgerBuilder extends Component {
 
     return (
       <>
-        <Modal>
+        <Modal show={this.state.purchasing}>
           <OrderSummary ingredients={this.state.ingredients} />
         </Modal>
         <Burger ingredients={this.state.ingredients} />
@@ -86,6 +91,7 @@ class BurgerBuilder extends Component {
           disabledButton={disabledButton}
           price={this.state.totalPrice}
           purchaseable={this.state.purchaseable}
+          ordered={this.purchaseHandler}
         />
       </>
     );
