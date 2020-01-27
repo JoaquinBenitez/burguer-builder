@@ -1,10 +1,10 @@
 import React from "react";
-import styles from './Layout.module.css'
+import classes from './Layout.module.css'
 
 const Layout = props => (
   <>
     <div>Toolbar, SideDrawer, Backdrop</div>
-    <main className={styles.Content}>{props.children}</main>
+    <main className={classes.Content}>{props.children}</main>
   </>
 );
 

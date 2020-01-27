@@ -1,6 +1,6 @@
 import React from "react";
 import BurgerIngredient from "./BurgerIngredient/BurgerIngredient";
-import styles from "./Burger.module.css";
+import classes from "./Burger.module.css";
 
 const Burger = props => {
   //need to convert Obj to Arr to use map
@@ -25,7 +25,7 @@ const Burger = props => {
   }
 
   return (
-    <div className={styles.Burger}>
+    <div className={classes.Burger}>
       <BurgerIngredient type="bread-top" />
       {arrayIngredients}
       <BurgerIngredient type="bread-bottom" />
