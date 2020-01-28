@@ -1,4 +1,5 @@
 import React from "react";
+import CustomButton from "../../UI/Button/CustomButton";
 
 const OrderSummary = props => {
   const ingredientSummary = Object.keys(props.ingredients).map(key => {
@@ -15,6 +16,8 @@ const OrderSummary = props => {
       <p>A delicious burger with the following ingredients:</p>
       <ul>{ingredientSummary}</ul>
       <p>Continue to checkout?</p>
+      <CustomButton btnType="Cancel" clicked={props.clickCancel}> CANCEL </CustomButton>
+      <CustomButton btnType="Continue" clicked={props.clickContinue}> CONTINUE </CustomButton>
     </>
   );
 };

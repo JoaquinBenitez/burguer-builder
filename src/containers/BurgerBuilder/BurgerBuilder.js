@@ -69,12 +69,18 @@ class BurgerBuilder extends Component {
   };
 
   purchaseHandler = () => {
-    this.setState({purchasing: true})
-  }
+    this.setState({ purchasing: true });
+  };
 
-purchaseCancelHandler = () => {
-  this.setState({purchasing: false})
-}
+  purchaseCancelHandler = () => {
+    this.setState({ purchasing: false });
+  };
+
+  purchaseContinueHandler = () => {
+    ///this is it for now, later on will be making a server side 
+    alert('You continue with your burguer!')
+    
+  }
 
   render() {
     //TODO try to do it using map()
@@ -85,8 +91,15 @@ purchaseCancelHandler = () => {
 
     return (
       <>
-        <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
-          <OrderSummary ingredients={this.state.ingredients} />
+        <Modal
+          show={this.state.purchasing}
+          modalClosed={this.purchaseCancelHandler}
+        >
+          <OrderSummary
+            ingredients={this.state.ingredients}
+            clickCancel={this.purchaseCancelHandler}
+            clickContinue={this.purchaseContinueHandler}
+          />
         </Modal>
         <Burger ingredients={this.state.ingredients} />
         <BuildControls
