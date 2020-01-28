@@ -5,10 +5,10 @@ import Modal from "../../components/UI/Modal/Modal";
 import OrderSummary from "../../components/Burger/OrderSummary/OrderSummary";
 
 const INGREDIENT_PRICES = {
-  salad: 0.3,
-  cheese: 0.5,
-  meat: 1.3,
-  bacon: 0.6
+  salad: 0.30,
+  cheese: 0.50,
+  meat: 1.30,
+  bacon: 0.60
 };
 
 class BurgerBuilder extends Component {
@@ -20,7 +20,7 @@ class BurgerBuilder extends Component {
       cheese: 0,
       meat: 0
     },
-    totalPrice: 2,
+    totalPrice: 2.00,
     purchaseable: false,
     purchasing: false
   };
@@ -77,10 +77,9 @@ class BurgerBuilder extends Component {
   };
 
   purchaseContinueHandler = () => {
-    ///this is it for now, later on will be making a server side 
-    alert('You continue with your burguer!')
-    
-  }
+    ///this is it for now, later on will be making a server side
+    alert("You continue with your burguer!");
+  };
 
   render() {
     //TODO try to do it using map()
@@ -99,6 +98,7 @@ class BurgerBuilder extends Component {
             ingredients={this.state.ingredients}
             clickCancel={this.purchaseCancelHandler}
             clickContinue={this.purchaseContinueHandler}
+            totalPrice={this.state.totalPrice}
           />
         </Modal>
         <Burger ingredients={this.state.ingredients} />
