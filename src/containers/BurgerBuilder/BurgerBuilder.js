@@ -21,7 +21,8 @@ class BurgerBuilder extends Component {
     totalPrice: 2.0,
     purchaseable: false,
     purchasing: false,
-    loading: false
+    loading: false,
+    error: false
   };
 
   //fetching initial ingredients from firebase backend:
@@ -32,6 +33,9 @@ class BurgerBuilder extends Component {
       )
       .then(response => {
         this.setState({ ingredients: response.data });
+      })
+      .catch (error => {
+        this.setState({error: true})
       });
   }
 
@@ -121,7 +125,7 @@ class BurgerBuilder extends Component {
     }
     let orderSummary = null;
 
-    let loadedIngredients = <LoadingSpinner />;
+    let loadedIngredients = this.state.error ? <p>Problem loading ingredients</p> : <LoadingSpinner />;
     if (this.state.ingredients) {
       loadedIngredients = (
         <>

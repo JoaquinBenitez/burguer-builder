@@ -3,11 +3,9 @@ import Modal from "../UI/Modal/Modal";
 
 const WithErrorHandler = (WrappedComponent, axios) => {
   return class extends Component {
-    state = {
-      error: null
-    };
-
-    componentDidMount() {
+    constructor(props) {
+      super(props);
+      this.state = {error: null};
       this.reqInterceptor = axios.interceptors.request.use(req => {
         this.setState({ error: null });
         return req;
@@ -21,7 +19,7 @@ const WithErrorHandler = (WrappedComponent, axios) => {
     }
 
     componentWillUnmount() {
-      //this is to prevent memory leaking
+      //this is to prevent memory leaking from interceptors
       axios.interceptors.request.eject(this.reqInterceptor);
       axios.interceptors.response.eject(this.resInterceptor);
     }
