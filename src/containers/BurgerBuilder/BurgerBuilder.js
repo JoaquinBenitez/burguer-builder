@@ -7,17 +7,12 @@ import axios from "../../axios-orders.js";
 import LoadingSpinner from "../../components/UI/LoadingSpinner/LoadingSpinner";
 import WithErrorHandler from "../../components/hoc/WithErrorHandler";
 
-const INGREDIENT_PRICES = {
-  salad: 0.3,
-  cheese: 0.5,
-  meat: 1.3,
-  bacon: 0.6
-};
 
 class BurgerBuilder extends Component {
   //no need to use constructor, state do it automatically
   state = {
     ingredients: null,
+    eachPrice: null,
     totalPrice: 2.0,
     purchaseable: false,
     purchasing: false,
@@ -34,8 +29,17 @@ class BurgerBuilder extends Component {
       .then(response => {
         this.setState({ ingredients: response.data });
       })
-      .catch (error => {
-        this.setState({error: true})
+      .catch(error => {
+        this.setState({ error: true });
+      });
+
+    axios
+      .get("https://react-burger-builder-joaquin.firebaseio.com/prices.json")
+      .then(response => {
+        this.setState({ eachPrice: response.data });
+      })
+      .catch(error => {
+        this.setState({ error: true });
       });
   }
 
@@ -46,7 +50,7 @@ class BurgerBuilder extends Component {
       ...this.state.ingredients
     };
     updatedIngredients[type] = updatedCount;
-    const priceAddition = INGREDIENT_PRICES[type];
+    const priceAddition = this.state.eachPrice[type];
     const oldPrice = this.state.totalPrice;
     const newPrice = oldPrice + priceAddition;
     this.setState({ ingredients: updatedIngredients, totalPrice: newPrice });
@@ -63,7 +67,7 @@ class BurgerBuilder extends Component {
       ...this.state.ingredients
     };
     updatedIngredients[type] = updatedCount;
-    const priceSubtracion = INGREDIENT_PRICES[type];
+    const priceSubtracion = this.state.eachPrice[type];
     const oldPrice = this.state.totalPrice;
     const newPrice = oldPrice - priceSubtracion;
     this.setState({ ingredients: updatedIngredients, totalPrice: newPrice });
@@ -125,7 +129,11 @@ class BurgerBuilder extends Component {
     }
     let orderSummary = null;
 
-    let loadedIngredients = this.state.error ? <p>Problem loading ingredients</p> : <LoadingSpinner />;
+    let loadedIngredients = this.state.error ? (
+      <p>Problem loading ingredients</p>
+    ) : (
+      <LoadingSpinner />
+    );
     if (this.state.ingredients) {
       loadedIngredients = (
         <>
