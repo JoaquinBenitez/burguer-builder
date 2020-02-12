@@ -94,6 +94,7 @@ class BurgerBuilder extends Component {
   };
 
   purchaseContinueHandler = () => {
+    /*
     //this should be modified as the price should be calculated on serverside
     this.setState({ loading: true });
     const order = {
@@ -118,6 +119,8 @@ class BurgerBuilder extends Component {
       .catch(error => {
         this.setState({ loading: false, purchasing: false });
       });
+    ; */
+    this.props.history.push("/checkout");
   };
 
   render() {
