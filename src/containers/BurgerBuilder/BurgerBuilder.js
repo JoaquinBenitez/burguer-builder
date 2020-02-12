@@ -7,7 +7,6 @@ import axios from "../../axios-orders.js";
 import LoadingSpinner from "../../components/UI/LoadingSpinner/LoadingSpinner";
 import WithErrorHandler from "../../components/hoc/WithErrorHandler";
 
-
 class BurgerBuilder extends Component {
   //no need to use constructor, state do it automatically
   state = {

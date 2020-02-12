@@ -1,18 +1,16 @@
 import React, { Component } from "react";
-import CustomButton from "../../UI/Button/CustomButton";
+import CustomButton from "../../UI/CustomButton/CustomButton";
 
-class OrderSummary extends Component {  
+class OrderSummary extends Component {
   render() {
-    const ingredientSummary = Object.keys(this.props.ingredients).map(
-      key => {
-        return (
-          <li key={key}>
-            <span style={{ textTransform: "capitalize" }}>{key}</span>:{" "}
-            {this.props.ingredients[key]}
-          </li>
-        );
-      }
-    );
+    const ingredientSummary = Object.keys(this.props.ingredients).map(key => {
+      return (
+        <li key={key}>
+          <span style={{ textTransform: "capitalize" }}>{key}</span>:{" "}
+          {this.props.ingredients[key]}
+        </li>
+      );
+    });
 
     return (
       <>
