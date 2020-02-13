@@ -1,5 +1,8 @@
 import React, { Component } from "react";
+import { Route } from "react-router-dom";
+
 import CheckoutSummary from "../../components/Burger/CheckoutSummary/CheckoutSummary";
+import ContactData from "./ContactData/ContactData";
 
 class Checkout extends Component {
   state = {
@@ -25,8 +28,9 @@ class Checkout extends Component {
     this.props.history.goBack();
   };
 
+  //TODO: this isn't working anymore, will need to use withRouter() HOC
   continueButtonHandler = () => {
-    this.props.history.replace("/checkout/contact-data");
+    this.props.history.push("/contact-data");
   };
 
   render() {
@@ -36,6 +40,10 @@ class Checkout extends Component {
           checkoutCancel={this.cancelButtonHandler}
           checkoutContinue={this.continueButtonHandler}
           ingredients={this.state.ingredients}
+        />
+        <Route
+          path={this.props.match.path + "/contact-data"}
+          component={ContactData}
         />
       </div>
     );
