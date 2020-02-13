@@ -3,16 +3,22 @@ import CheckoutSummary from "../../components/Burger/CheckoutSummary/CheckoutSum
 
 class Checkout extends Component {
   state = {
-    ingredients: null
+    ingredients: {
+      salad: 0,
+      cheese: 0,
+      bacon: 0,
+      meat: 0
+    }
   };
 
   componentDidMount() {
-      const query = new URLSearchParams(this.props.location.search);
-      const ingredients = {};
-      for (let param of query.entries()) {
-        ingredients[param[0]] = param[1];
-      }
-      this.setState({ingredients: ingredients});
+    const query = new URLSearchParams(this.props.location.search);
+    const ingredients = {};
+    for (let param of query.entries()) {
+      ingredients[param[0]] = +param[1];
+    }
+    //console.log(ingredients);
+    this.setState({ ingredients: ingredients });
   }
 
   cancelButtonHandler = () => {
@@ -20,7 +26,7 @@ class Checkout extends Component {
   };
 
   continueButtonHandler = () => {
-    this.props.history.replace('/checkout/contact-data');
+    this.props.history.replace("/checkout/contact-data");
   };
 
   render() {
