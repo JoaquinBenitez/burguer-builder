@@ -1,0 +1,12 @@
+.DataOfContact {
+    margin: 20px auto;
+    width: 80%;
+    text-align: center;
+  }
+  
+  @media (min-width: 600px) {
+    .DataOfContact {
+      width: 500px;
+    }
+  }
+  

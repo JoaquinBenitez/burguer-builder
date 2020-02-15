@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Route } from "react-router-dom";
 
 import CheckoutSummary from "../../components/Burger/CheckoutSummary/CheckoutSummary";
-import ContactData from "./ContactData/ContactData";
+import DataOfContact from "./DataOfContact/DataOfContact";
 
 class Checkout extends Component {
   state = {
@@ -31,10 +31,14 @@ class Checkout extends Component {
 
   //TODO: this isn't working anymore, will need to use withRouter() HOC
   continueButtonHandler = () => {
-    this.props.history.replace("/contact-data");
+    this.props.history.push("/contact-data");
   };
 
   render() {
+    /*<Route
+          path={this.props.match.path + '/contact-data'}
+          component={DataOfContact}
+    />*/
     return (
       <div>
         <CheckoutSummary
@@ -43,8 +47,8 @@ class Checkout extends Component {
           ingredients={this.state.ingredients}
         />
         <Route
-          path={this.props.match.path + '/contact-data'}
-          component={ContactData}
+          path="/contact-data"
+          component={DataOfContact}
         />
       </div>
     );

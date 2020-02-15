@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-//import styles from './ContactData.module.css';
+import { withRouter } from 'react-router-dom';
+import styles from './DataOfContact.module.css';
 
 import CustomButton from "../../../components/UI/CustomButton/CustomButton";
 
-class ContactData extends Component {
+class DataOfContact extends Component {
   /*state = {
     name: "",
     email: "",
@@ -15,7 +16,7 @@ class ContactData extends Component {
 
   render() {
     return (
-      <div>
+      <div className={styles.DataOfContact}>
         <h4>Enter your contact data: </h4>
         <form>
           <input type="text" name="name" placeholder="Name" />
@@ -29,4 +30,4 @@ class ContactData extends Component {
   }
 }
 
-export default ContactData;
+export default withRouter(DataOfContact);
