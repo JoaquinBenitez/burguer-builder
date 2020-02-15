@@ -120,6 +120,8 @@ class BurgerBuilder extends Component {
         this.setState({ loading: false, purchasing: false });
       });
     ; */
+
+    //this is the logic to pass the ingredients in url bar
     const queryParams = [];
     for (let i in this.state.ingredients) {
       queryParams.push(

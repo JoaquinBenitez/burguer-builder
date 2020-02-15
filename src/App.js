@@ -7,16 +7,14 @@ import Checkout from "./containers/Checkout/Checkout";
 
 function App() {
   return (
-    <div>
-      <BrowserRouter>
-        <Layout>
-          <Switch>
-            <Route path="/checkout" component={Checkout} />
-            <Route path="/" exact component={BurgerBuilder} />
-          </Switch>
-        </Layout>
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+      <Layout>
+        <Switch>
+          <Route path="/checkout" component={Checkout} />
+          <Route path="/" exact component={BurgerBuilder} />
+        </Switch>
+      </Layout>
+    </BrowserRouter>
   );
 }
 

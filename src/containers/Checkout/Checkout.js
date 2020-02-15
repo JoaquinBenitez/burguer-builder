@@ -17,6 +17,7 @@ class Checkout extends Component {
   componentDidMount() {
     const query = new URLSearchParams(this.props.location.search);
     const ingredients = {};
+    //this is to get the ingredients from previous order
     for (let param of query.entries()) {
       ingredients[param[0]] = +param[1];
     }
@@ -30,7 +31,7 @@ class Checkout extends Component {
 
   //TODO: this isn't working anymore, will need to use withRouter() HOC
   continueButtonHandler = () => {
-    this.props.history.push("/contact-data");
+    this.props.history.replace("/contact-data");
   };
 
   render() {
@@ -42,7 +43,7 @@ class Checkout extends Component {
           ingredients={this.state.ingredients}
         />
         <Route
-          path={this.props.match.path + "/contact-data"}
+          path={this.props.match.path + '/contact-data'}
           component={ContactData}
         />
       </div>

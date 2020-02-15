@@ -1,19 +1,21 @@
 import React, { Component } from "react";
+//import styles from './ContactData.module.css';
+
 import CustomButton from "../../../components/UI/CustomButton/CustomButton";
-import styles from './ContactData.module.css';
 
 class ContactData extends Component {
-  state = {
+  /*state = {
     name: "",
     email: "",
     address: {
       street: "",
       postalCode: ""
     }
-  };
+  }; */
+
   render() {
     return (
-      <div className={styles.ContactData}>
+      <div>
         <h4>Enter your contact data: </h4>
         <form>
           <input type="text" name="name" placeholder="Name" />
