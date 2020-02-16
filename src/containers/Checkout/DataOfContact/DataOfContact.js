@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { withRouter } from 'react-router-dom';
-import styles from './DataOfContact.module.css';
+// import { withRouter } from 'react-router-dom';
+import styles from "./DataOfContact.module.css";
 
 import CustomButton from "../../../components/UI/CustomButton/CustomButton";
 
@@ -30,4 +30,4 @@ class DataOfContact extends Component {
   }
 }
 
-export default withRouter(DataOfContact);
+export default DataOfContact;
