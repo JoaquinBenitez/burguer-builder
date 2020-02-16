@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Route, withRouter, Switch } from "react-router-dom";
+import { Route, withRouter } from "react-router-dom";
+
 
 import CheckoutSummary from "../../components/Burger/CheckoutSummary/CheckoutSummary";
 import DataOfContact from "./DataOfContact/DataOfContact";
@@ -41,14 +42,16 @@ class Checkout extends Component {
     />*/
     return (
       <div>
+        <Route
+          path={this.props.match.path + "/contact-data"}
+          component={DataOfContact}
+        />
+        
         <CheckoutSummary
           checkoutCancel={this.cancelButtonHandler}
           checkoutContinue={this.continueButtonHandler}
           ingredients={this.state.ingredients}
-        />
-        <Switch>
-          <Route path={this.props.match.path + '/contact-data'} component={DataOfContact} />
-        </Switch>
+        />        
       </div>
     );
   }
